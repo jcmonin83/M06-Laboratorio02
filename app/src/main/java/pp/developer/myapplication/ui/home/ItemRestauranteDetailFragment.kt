@@ -64,6 +64,11 @@ class ItemRestauranteDetailFragment: Fragment() {
         var anioFundacion= view.findViewById<TextView>(R.id.txtAnio)
         var resenia = view.findViewById<TextView>(R.id.txtReseniaRestaurante)
         var valoracion = view.findViewById<RatingBar>(R.id.ratbCalificacion)
+        //Aqui pongo de forma manual las imagenes
+        //puesto que no encontré la forma correcta de hacer dinamicamente
+        //imgRestaurante.setImageResource(v.context.resources.getIdentifier("imgh-${restaurante.id.toString()}","drawable",v.context.packageName))
+        //imgRestaurante.setImageURI(Uri.parse("android:resource://${v.context.packageName}/imgh-${restaurante.id}"))
+
         when( restaurante.id ){
             1 -> imgRestaurante.setImageResource(R.drawable.imgh_1)
             2 -> imgRestaurante.setImageResource(R.drawable.imgh_2)
@@ -76,8 +81,6 @@ class ItemRestauranteDetailFragment: Fragment() {
             9 -> imgRestaurante.setImageResource(R.drawable.imgh_9)
             10 -> imgRestaurante.setImageResource(R.drawable.imgh_10)
         }
-        //imgRestaurante.setImageResource(v.context.resources.getIdentifier("imgh-${restaurante.id.toString()}","drawable",v.context.packageName))
-        //imgRestaurante.setImageURI(Uri.parse("android:resource://${v.context.packageName}/imgh-${restaurante.id}"))
         anioFundacion.text = "Desde ${restaurante.fundacion}"
         nombre.text= restaurante.nombre
         domicilio.text ="Ubicacion: ${restaurante.domicilio}"

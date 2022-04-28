@@ -29,8 +29,8 @@ class Login : AppCompatActivity() {
 
     fun login_Click(view: View) {
         val usuario = findViewById<EditText>(R.id.iTxtUsuario).text
-        val contrasena = findViewById<EditText>(R.id.iTxtContrasena).text
-        if( !usuario.isNullOrEmpty() && !contrasena.isNullOrEmpty() ){
+        val contrasena = findViewById<EditText>(R.id.iTxtContrasena).text.toString()
+        if( !usuario.isNullOrEmpty() && validatePassword( contrasena) ){
             validateUsuario("validateUsuario")
         }else{
             Toast.makeText(this,"Usuario no valido.",Toast.LENGTH_SHORT).show()
@@ -39,8 +39,7 @@ class Login : AppCompatActivity() {
     fun validateUsuario(path: String){
         var id:Int = 0
         var usuario:String = ""
-        //Toast.makeText(this,"Validando usuario...", Toast.LENGTH_SHORT).show()
-        Message("Validando usuario...")
+            Message("Validando usuario...")
 
             CoroutineScope(Dispatchers.IO).launch {
                 val call: Response<Usuario> = retroApi.create(APIServices::class.java).validateUser(path)
@@ -59,7 +58,6 @@ class Login : AppCompatActivity() {
                 putExtra(USER_USER,usuario)
             }
             startActivity(intent)
-
     }
     private fun Message( message:String){
         Toast.makeText(this,"${message}",Toast.LENGTH_SHORT).show()
