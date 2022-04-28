@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="pp.developer.myapplication.ui.home.HomeFragment"
+        android:label="@string/label_restaurantes"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_itemRestauranteDetailFragment"
+            app:destination="@id/itemRestauranteDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="pp.developer.myapplication.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="pp.developer.myapplication.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/itemRestauranteDetailFragment"
+        android:name="pp.developer.myapplication.ui.home.ItemRestauranteDetailFragment"
+        android:label="Restaurante - Detalle" >
+        <action
+            android:id="@+id/action_itemRestauranteDetailFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
