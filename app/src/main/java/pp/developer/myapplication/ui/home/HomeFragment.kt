@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 
-class HomeFragment : Fragment(), Communicator {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private  lateinit var adapter: RestauranteAdapter
@@ -83,23 +83,5 @@ class HomeFragment : Fragment(), Communicator {
 
     private fun Error( message:String){
         Toast.makeText(context,"Ha ocurrido un error. ${message}",Toast.LENGTH_SHORT).show()
-    }
-
-    override fun passId(id: Int) {
-        val bundle = Bundle()
-        bundle.putInt("input_id",id)
-
-        val transact = this.parentFragmentManager.beginTransaction()
-        val frgmnt2 = ItemRestauranteDetailFragment()
-        frgmnt2.arguments = bundle
-    }
-    companion object {
-
-        @JvmStatic
-        fun newInstance(Id:Int) = ItemRestauranteDetailFragment().apply {
-            arguments = Bundle().apply {
-                putString("id", Id.toString())
-            }
-        }
     }
 }

@@ -24,8 +24,8 @@ class RestauranteAdapter(private val restaurantes: List<Restaurante>):
     override fun onBindViewHolder(holder: RestauranteViewHolder, position: Int) {
         val items:Restaurante = restaurantes[position]
         holder.itemView.setOnClickListener {
-            HomeFragment.newInstance(position+1)
-            Navigation.findNavController(it).navigate(R.id.action_nav_home_to_itemRestauranteDetailFragment)
+            val bundle = bundleOf("id" to items.id)
+            Navigation.findNavController(it).navigate(R.id.action_nav_home_to_itemRestauranteDetailFragment,bundle)
         }
         holder.itemView.findViewById<ImageView>(R.id.imgVwRestaurante).setImageURI(Uri.parse("android:resource://${holder.itemView.context.packageName}/imgh-${items.id}"))
         holder.bind(items)
